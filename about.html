@@ -1,116 +1,217 @@
-<!-- Copyright (C) 2023-2025 anonymous
-
-This file is part of PSFree.
-
-PSFree is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-PSFree is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
+<!-- Copyright (C) 2023-2025 XYVENQORIX -->
 <html>
     <head>
         <meta charset='utf-8'>
-        <title>About PSFree</title>
+        <title>About · GoldenHenxy9.000 by XYVENQORIX</title>
+        <style>
+            * { margin:0; padding:0; box-sizing:border-box; }
+            body {
+                background: #0a0e0f;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Courier New', monospace;
+                padding: 20px;
+            }
+            .about-card {
+                background: #11181c;
+                border: 1px solid #1e2a30;
+                border-radius: 16px;
+                padding: 36px 34px 30px;
+                max-width: 780px;
+                width: 100%;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(0, 180, 255, 0.02);
+            }
+            .about-header {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                border-bottom: 1px solid #1a2a30;
+                padding-bottom: 16px;
+                margin-bottom: 24px;
+                flex-wrap: wrap;
+            }
+            .about-header h1 {
+                color: #f5d98a;
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+            }
+            .about-header .tag {
+                background: #1a2e34;
+                color: #6aaaba;
+                padding: 4px 14px;
+                border-radius: 30px;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                border: 1px solid #1e3a44;
+            }
+            .about-header .tag.creator {
+                color: #f5d98a;
+                border-color: #2a4a3a;
+                background: #1a2a20;
+                font-weight: 700;
+            }
+            .about-body {
+                color: #b0c8d0;
+                font-size: 14px;
+                line-height: 1.8;
+            }
+            .about-body p { margin-bottom: 14px; }
+            .about-body a {
+                color: #6ab8d0;
+                text-decoration: none;
+                border-bottom: 1px dotted #1a3a44;
+                transition: all 0.2s;
+            }
+            .about-body a:hover {
+                color: #9ad8f0;
+                border-bottom-color: #4a8a9a;
+            }
+            .section-title {
+                color: #7ab0c0;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                margin: 24px 0 12px;
+                border-left: 3px solid #f5d98a;
+                padding-left: 14px;
+            }
+            .file-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 6px 16px;
+                margin: 8px 0 6px;
+                font-size: 13px;
+            }
+            .file-grid a {
+                color: #7ab0c0;
+                text-decoration: none;
+                border-bottom: 1px dotted #1a3a44;
+                transition: all 0.2s;
+                padding: 2px 0;
+            }
+            .file-grid a:hover {
+                color: #b0dce8;
+                border-bottom-color: #4a8a9a;
+            }
+            .license-badge {
+                display: inline-block;
+                background: #0d2026;
+                border: 1px solid #1a3a44;
+                border-radius: 30px;
+                padding: 4px 20px;
+                font-size: 12px;
+                color: #6aaaba;
+                letter-spacing: 0.5px;
+                margin-top: 6px;
+            }
+            .footer-back {
+                margin-top: 28px;
+                text-align: center;
+                border-top: 1px solid #1a2a30;
+                padding-top: 18px;
+            }
+            .footer-back a {
+                color: #4a7a8a;
+                text-decoration: none;
+                font-size: 14px;
+                letter-spacing: 0.5px;
+                border-bottom: 1px solid transparent;
+                transition: all 0.25s;
+            }
+            .footer-back a:hover {
+                color: #8fc8e0;
+                border-bottom-color: #4a8a9a;
+            }
+            .creator-line {
+                text-align: center;
+                color: #2a4a5a;
+                font-size: 13px;
+                margin-top: 12px;
+                letter-spacing: 0.5px;
+            }
+            .creator-line strong {
+                color: #f5d98a;
+                font-weight: 700;
+                font-size: 15px;
+            }
+            @media (max-width: 600px) {
+                .about-card { padding: 22px 16px; }
+                .about-header h1 { font-size: 18px; }
+                .file-grid { grid-template-columns: 1fr; }
+            }
+        </style>
     </head>
     <body>
-    PSFree is an exploit chain for PS4 and PS5.<br>
-    PSFree is free software. See <a href='./COPYING'>COPYING</a> for the copyleft information.<br>
-    PSFree's license is GNU-AGPL-3.0-or-later.<br>
-    Here is the source code of this program:<br>
-    <br>
-    HTML files:<br>
-    <a href='./index.html' download>index.html</a><br>
-    <a href='./about.html' download>about.html</a><br>
-    JavaScript files:<br>
-    <table id="jslicense-labels1">
-        <tr>
-            <td><a href="./psfree.mjs">psfree.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./psfree.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./alert.mjs">alert.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./alert.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./config.mjs">config.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./config.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./send.mjs">send.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./send.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./scripts/lapse.mjs">scripts/lapse.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./scripts/lapse.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./rop/800.mjs">rop/800.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./rop/800.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/chain.mjs">module/chain.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/chain.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/int64.mjs">module/int64.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/int64.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/view.mjs">module/view.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/view.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/memtools.mjs">module/memtools.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/memtools.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/utils.mjs">module/utils.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/utils.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/rw.mjs">module/rw.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/rw.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/offset.mjs">module/offset.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/offset.mjs" download>download</a></td>
-        </tr>
-        <tr>
-            <td><a href="./module/mem.mjs">module/mem.mjs</a></td>
-            <td><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU-AGPL-3.0-or-later</a></td>
-            <td><a href="./module/mem.mjs" download>download</a></td>
-        </tr>
-    </table>
-    kpatch/ files:<br>
-    <a href="./kpatch/utils.h">kpatch/utils.h</a><br>
-    <a href="./kpatch/script.ld">kpatch/script.ld</a><br>
-    <a href="./kpatch/Makefile">kpatch/Makefile</a><br>
-    <a href="./kpatch/80x.c">kpatch/80x.c</a><br>
-    <a href="./kpatch/types.h">kpatch/types.h</a><br>
-    fonts/ files:<br>
-    <a href="./fonts/README.txt">fonts/README.txt</a><br>
-    <a href="./fonts/FONTS.LICENSE">fonts/FONTS.LICENSE</a><br>
-    <a href="./fonts/LiberationMono-Regular.ttf">fonts/LiberationMono-Regular.ttf</a><br>
+        <div class="about-card">
+            <div class="about-header">
+                <h1>📄 GoldenHenxy9.000</h1>
+                <span class="tag creator">🏆 XYVENQORIX</span>
+                <span class="tag">AGPL-3.0</span>
+            </div>
+            <div class="about-body">
+                <p>
+                    PSFree is an exploit chain for PS4 and PS5.<br>
+                    This build — <strong>GoldenHenxy9.000</strong> — is adapted for PS4 9.00 with Lapse Kex.<br>
+                    <span style="color:#f5d98a;">🏆 Created by XYVENQORIX</span> · Fast &amp; reliable · ~80% stability.
+                </p>
+                <p>
+                    PSFree is free software. See <a href='./COPYING'>COPYING</a> for the copyleft information.<br>
+                    PSFree's license is GNU-AGPL-3.0-or-later.
+                </p>
+                <p>
+                    <span class="license-badge">🧾 GNU-AGPL-3.0-or-later</span>
+                    &nbsp; <a href="./COPYING">COPYING</a>
+                </p>
+                <div class="section-title">📁 HTML</div>
+                <div class="file-grid">
+                    <a href="./index.html">index.html</a>
+                    <a href="./about.html">about.html</a>
+                    <a href="./cache.html">cache.html</a>
+                </div>
+                <div class="section-title">📜 JavaScript (AGPL-3.0)</div>
+                <div class="file-grid" id="jslicense-labels1">
+                    <a href="./psfree.mjs">psfree.mjs</a>
+                    <a href="./alert.mjs">alert.mjs</a>
+                    <a href="./config.mjs">config.mjs</a>
+                    <a href="./send.mjs">send.mjs</a>
+                    <a href="./scripts/lapse.mjs">scripts/lapse.mjs</a>
+                    <a href="./rop/800.mjs">rop/800.mjs</a>
+                    <a href="./module/chain.mjs">chain.mjs</a>
+                    <a href="./module/int64.mjs">int64.mjs</a>
+                    <a href="./module/view.mjs">view.mjs</a>
+                    <a href="./module/memtools.mjs">memtools.mjs</a>
+                    <a href="./module/utils.mjs">utils.mjs</a>
+                    <a href="./module/rw.mjs">rw.mjs</a>
+                    <a href="./module/offset.mjs">offset.mjs</a>
+                    <a href="./module/mem.mjs">mem.mjs</a>
+                </div>
+                <div class="section-title">⚙️ kpatch/</div>
+                <div class="file-grid">
+                    <a href="./kpatch/utils.h">utils.h</a>
+                    <a href="./kpatch/script.ld">script.ld</a>
+                    <a href="./kpatch/Makefile">Makefile</a>
+                    <a href="./kpatch/80x.c">80x.c</a>
+                    <a href="./kpatch/types.h">types.h</a>
+                </div>
+                <div class="section-title">🔤 fonts/</div>
+                <div class="file-grid">
+                    <a href="./fonts/README.txt">README.txt</a>
+                    <a href="./fonts/FONTS.LICENSE">FONTS.LICENSE</a>
+                    <a href="./fonts/LiberationMono-Regular.ttf">LiberationMono-Regular.ttf</a>
+                </div>
+                <div style="margin-top:20px; font-size:13px; color:#4a7a8a;">
+                    <span>🔹 goldenhen.bin · aio_patches.bin · lapsom.js</span>
+                </div>
+            </div>
+            <div class="footer-back">
+                <a href="./index.html">← back to exploit</a>
+            </div>
+            <div class="creator-line">
+                🏆 <strong>XYVENQORIX</strong> · PSFree · Lapse Kex 9.00
+            </div>
+        </div>
     </body>
 </html>

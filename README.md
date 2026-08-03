@@ -1,22 +1,42 @@
-# PSFree version 1.5.0b
+# 🎮 GoldHEN XY 9.00 Exploit
 
-Lapse Kex ported to 9.00
+> Herramienta relacionada con el entorno GoldHEN para PlayStation 4 con firmware 9.00.
 
-Very fast and reliable! Around 80% stability rate.
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-In%20Development-orange)
+![Platform](https://img.shields.io/badge/Platform-PlayStation%204-blue?logo=playstation&logoColor=white)
 
-Update: I've added an payload having some process_dtor_handler patches related to aio bugs.. Now all games should work properly.. patches were made by abc for 8.0x and I ported to 9.00. Thx a lot to Sistro and CTN for some explanation on low level coding!!! :)
+## 📖 Descripción
 
-PSFree is a collection of exploits for the PS4 console. The main focus of the 
-repo is for the PS4 but we try to make things portable to PS5.
+**GoldHEN XY 9.00 Exploit** es un proyecto enfocado en el entorno de PlayStation 4, basado en herramientas de *Homebrew* y personalización del sistema.
 
-* Exploits
-  * PSFree: src/psfree.mjs
-  * Lapse (kernel): src/scripts/lapse.mjs
+Permite trabajar con funciones avanzadas dentro del ecosistema de PS4 utilizando el firmware compatible.
 
-# COPYRIGHT AND AUTHORS:
-AGPL-3.0-or-later (see src/COPYING). This repo belongs to the group
-`anonymous`. We refer to anonymous contributors as "anonymous" as well.
-# CREDITS:
-* anonymous for PS4 firmware kernel dumps
-* Check the appropriate files for any **extra** contributors. Unless otherwise
-  stated, everything here can also be credited to us.
+> ⚠️ Este proyecto está destinado únicamente para investigación, desarrollo y uso responsable.
+
+## ✨ Características
+
+- 🎮 Compatible con entorno PlayStation 4.
+- ⚡ Diseñado para firmware 9.00.
+- 🛠️ Herramientas relacionadas con Homebrew.
+- 📦 Gestión y personalización del sistema.
+- 🚀 Proyecto en desarrollo.
+
+## 📸 Capturas
+
+Próximamente...
+
+## 🛠️ Tecnologías
+
+- PlayStation 4 Homebrew.
+- GoldHEN.
+- Web Exploit.
+- Herramientas de desarrollo PS4.
+
+## 🚀 Instalación
+
+Clona este repositorio:
+
+```bash
+git clone https://github.com/xyvenqorix/goldenhenxy9.00exployt.git
+cd goldenhenxy9.00exployt

@@ -1,163 +1,975 @@
 <html manifest="psfree_lapse.cache">
+
 <head>
+
     <meta charset="utf-8">
-    <title>GoldenHenxy9.000 by XYVENQORIX</title>
+
+    <title>
+        GoldenHenxy9.000 by XYVENQORIX
+    </title>
+
+
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
         body {
-            background: #0a0e0f;
+
             min-height: 100vh;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
-            font-family: 'Courier New', monospace;
+
             padding: 20px;
-        }
-        .cache-card {
-            background: #11181c;
-            border: 1px solid #1e2a30;
-            border-radius: 16px;
-            padding: 44px 40px 40px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(0, 180, 255, 0.02);
-            text-align: center;
-        }
-        .cache-title {
-            color: #f5d98a;
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .cache-title small {
-            display: block;
-            color: #5a8a9a;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-top: 4px;
-        }
-        .cache-title small strong {
-            color: #f5d98a;
-            font-weight: 700;
-        }
-        .cache-sub {
-            color: #4a7a8a;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin: 6px 0 28px;
-        }
-        .progress-wrap {
-            background: #0d1418;
-            border-radius: 40px;
-            height: 14px;
-            border: 1px solid #1e3238;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #1c2538 0%,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    #151d2e 0%,
+                    transparent 35%
+                ),
+
+                #0b0d12;
+
+            color: #e5e7eb;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
             overflow: hidden;
-            margin-bottom: 12px;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
         }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #0a4a5a, #f5d98a);
-            border-radius: 40px;
-            transition: width 0.25s ease;
-            box-shadow: 0 0 20px rgba(245,217,138,0.10);
+
+
+        /* =====================================================
+           TERMINAL MACOS
+        ===================================================== */
+
+        .cache-card {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 650px;
+
+            min-height: 360px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #101014,
+                    #09090b
+                );
+
+            border:
+                1px solid #303036;
+
+            border-radius:
+                14px;
+
+            box-shadow:
+
+                0 30px 80px
+                rgba(0,0,0,0.65),
+
+                0 0 0 1px
+                rgba(255,255,255,0.025),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.04);
+
+            overflow: hidden;
+
+            animation:
+                terminalAppear
+                0.45s
+                ease-out;
         }
-        .progress-label {
-            color: #7ab0c0;
-            font-size: 15px;
-            letter-spacing: 0.5px;
-            margin: 6px 0 18px;
-            min-height: 26px;
-        }
-        .cache-status {
-            color: #4a7a8a;
-            font-size: 13px;
-            border-top: 1px solid #1a2a30;
-            padding-top: 20px;
-            margin-top: 8px;
+
+
+        /* =====================================================
+           BARRA SUPERIOR DE TERMINAL
+        ===================================================== */
+
+        .cache-card::before {
+
+            content:
+                "Terminal";
+
+            position:
+                absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 42px;
+
             display: flex;
+
+            align-items: center;
+
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #2c2c30,
+                    #1e1e21
+                );
+
+            color:
+                #a7a7ad;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            font-size:
+                12px;
+
+            font-weight:
+                500;
+
+            border-bottom:
+                1px solid #38383d;
+
+            z-index:
+                5;
         }
-        .cache-status span { color: #8ab8c8; }
+
+
+        /* =====================================================
+           BOTONES ROJO / AMARILLO / VERDE
+        ===================================================== */
+
+        .cache-card::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                15px;
+
+            left:
+                14px;
+
+            width:
+                12px;
+
+            height:
+                12px;
+
+            border-radius:
+                50%;
+
+            background:
+                #ff5f57;
+
+            box-shadow:
+
+                20px 0 #febc2e,
+
+                40px 0 #28c840;
+
+            z-index:
+                6;
+        }
+
+
+        /* =====================================================
+           CONTENIDO DE TERMINAL
+        ===================================================== */
+
+        .cache-content {
+
+            padding:
+                70px 35px 30px;
+
+            text-align:
+                left;
+        }
+
+
+        /* =====================================================
+           LINEA DE COMANDO
+        ===================================================== */
+
+        .terminal-line {
+
+            color:
+                #8b949e;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .terminal-line .prompt {
+
+            color:
+                #28c840;
+
+            font-weight:
+                700;
+        }
+
+
+        /* =====================================================
+           TITULO
+        ===================================================== */
+
+        .cache-title {
+
+            color:
+                #f5d98a;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                26px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.5px;
+
+            line-height:
+                1.3;
+
+            text-shadow:
+                0 0 18px
+                rgba(245,217,138,0.10);
+        }
+
+
+        /* =====================================================
+           AUTOR
+        ===================================================== */
+
+        .cache-title small {
+
+            display:
+                block;
+
+            margin-top:
+                5px;
+
+            color:
+                #707782;
+
+            font-size:
+                12px;
+
+            font-weight:
+                400;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        .cache-title small strong {
+
+            color:
+                #f5d98a;
+
+            font-weight:
+                700;
+        }
+
+
+        /* =====================================================
+           SUBTITULO
+        ===================================================== */
+
+        .cache-sub {
+
+            margin:
+                8px 0 25px;
+
+            color:
+                #707782;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                12px;
+
+            letter-spacing:
+                0.8px;
+        }
+
+
+        /* =====================================================
+           BLOQUE DE ESTADO
+        ===================================================== */
+
+        .terminal-status {
+
+            margin:
+                0 0 18px;
+
+            color:
+                #72ff72;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.8;
+        }
+
+
+        .terminal-status .label {
+
+            color:
+                #8b949e;
+        }
+
+
+        /* =====================================================
+           BARRA DE PROGRESO
+        ===================================================== */
+
+        .progress-wrap {
+
+            width:
+                100%;
+
+            height:
+                13px;
+
+            background:
+                #050506;
+
+            border:
+                1px solid #303036;
+
+            border-radius:
+                3px;
+
+            overflow:
+                hidden;
+
+            margin-bottom:
+                12px;
+
+            box-shadow:
+                inset 0 2px 5px
+                rgba(0,0,0,0.7);
+        }
+
+
+        .progress-bar {
+
+            width:
+                0%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #15566a,
+                    #31a7c8,
+                    #f5d98a
+                );
+
+            border-radius:
+                2px;
+
+            transition:
+                width 0.25s ease;
+
+            box-shadow:
+                0 0 15px
+                rgba(245,217,138,0.18);
+        }
+
+
+        /* =====================================================
+           TEXTO DEL PROGRESO
+        ===================================================== */
+
+        .progress-label {
+
+            min-height:
+                22px;
+
+            margin:
+                6px 0 18px;
+
+            color:
+                #72ff72;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                0.2px;
+        }
+
+
+        /* =====================================================
+           INFORMACION
+        ===================================================== */
+
+        .cache-status {
+
+            display:
+                flex;
+
+            justify-content:
+                flex-start;
+
+            align-items:
+                center;
+
+            gap:
+                12px 22px;
+
+            flex-wrap:
+                wrap;
+
+            padding-top:
+                15px;
+
+            border-top:
+                1px solid #25252a;
+
+            color:
+                #727780;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                11px;
+        }
+
+
+        .cache-status span {
+
+            color:
+                #9298a1;
+        }
+
+
         .cache-status .creator-badge {
-            color: #f5d98a;
-            font-weight: 700;
+
+            color:
+                #f5d98a;
+
+            font-weight:
+                700;
         }
-        .spinner {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #1a3a44;
-            border-top-color: #f5d98a;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .cache-done .spinner {
-            border-color: #f5d98a;
-            border-top-color: #1a3a44;
-            animation: none;
-        }
-        .cache-done .progress-bar {
-            background: linear-gradient(90deg, #2a8a5a, #5ade8a);
-        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
         .footer-small {
-            margin-top: 18px;
-            color: #1a3a44;
-            font-size: 11px;
-            letter-spacing: 0.5px;
+
+            margin-top:
+                18px;
+
+            color:
+                #444850;
+
+            font-family:
+                "SFMono-Regular",
+                "SF Mono",
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                0.5px;
         }
+
+
         .footer-small .creator {
-            color: #f5d98a;
-            font-weight: 700;
+
+            color:
+                #f5d98a;
+
+            font-weight:
+                700;
         }
+
+
+        /* =====================================================
+           SPINNER
+        ===================================================== */
+
+        .spinner {
+
+            display:
+                inline-block;
+
+            width:
+                16px;
+
+            height:
+                16px;
+
+            border:
+                2px solid #27333a;
+
+            border-top-color:
+                #f5d98a;
+
+            border-radius:
+                50%;
+
+            animation:
+                spin
+                0.8s
+                linear
+                infinite;
+
+            vertical-align:
+                middle;
+
+            margin-right:
+                8px;
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* =====================================================
+           CACHE COMPLETADO
+        ===================================================== */
+
+        .cache-done .spinner {
+
+            border-color:
+                #f5d98a;
+
+            border-top-color:
+                #27333a;
+
+            animation:
+                none;
+        }
+
+
+        .cache-done .progress-bar {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #238b5a,
+                    #43d982
+                );
+
+            box-shadow:
+                0 0 15px
+                rgba(67,217,130,0.20);
+        }
+
+
+        .cache-done .progress-label {
+
+            color:
+                #43d982;
+        }
+
+
+        /* =====================================================
+           ANIMACION DE ENTRADA
+        ===================================================== */
+
+        @keyframes terminalAppear {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(12px)
+                    scale(0.98);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =====================================================
+           SELECCION
+        ===================================================== */
+
+        ::selection {
+
+            background:
+                rgba(59,130,246,0.35);
+
+            color:
+                #ffffff;
+        }
+
     </style>
+
+
     <script>
-    history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
-    function DLProgress(e){
-        var pct = Math.round(e.loaded / e.total * 100);
-        if (pct > 100) pct = 100;
-        document.getElementById('progressBar').style.width = pct + '%';
-        document.getElementById('progressLabel').innerHTML = 'Installing Offline Cache ... ' + pct + '%';
-    }
-    function DisplayCacheProgress(){
-        document.getElementById('progressBar').style.width = '100%';
-        document.getElementById('progressLabel').innerHTML = '✓ Cache Installed Successfully';
-        document.querySelector('.cache-card').classList.add('cache-done');
-        setTimeout(function(){ location.reload(); }, 3000);
-    }
-    window.applicationCache.addEventListener("progress", DLProgress, false);
-    window.applicationCache.oncached = function(e){ DisplayCacheProgress(); };
-    window.applicationCache.onupdateready = function(e){ DisplayCacheProgress(); };
+
+        history.replaceState(
+            null,
+            null,
+            'index.html'
+        );
+
+        var histlength =
+            history.length;
+
+        history.go(
+            -histlength
+        );
+
+
+        /* =====================================================
+           PROGRESO DE DESCARGA
+        ===================================================== */
+
+        function DLProgress(e) {
+
+            var pct =
+                Math.round(
+                    e.loaded /
+                    e.total *
+                    100
+                );
+
+            if (pct > 100) {
+
+                pct = 100;
+            }
+
+
+            document
+                .getElementById('progressBar')
+                .style
+                .width =
+                pct + '%';
+
+
+            document
+                .getElementById('progressLabel')
+                .innerHTML =
+                'Installing Offline Cache ... '
+                + pct
+                + '%';
+        }
+
+
+        /* =====================================================
+           CACHE INSTALADO
+        ===================================================== */
+
+        function DisplayCacheProgress() {
+
+            document
+                .getElementById('progressBar')
+                .style
+                .width =
+                '100%';
+
+
+            document
+                .getElementById('progressLabel')
+                .innerHTML =
+                '✓ Cache Installed Successfully';
+
+
+            document
+                .querySelector('.cache-card')
+                .classList
+                .add('cache-done');
+
+
+            setTimeout(
+                function() {
+
+                    location.reload();
+
+                },
+                3000
+            );
+        }
+
+
+        /* =====================================================
+           APPLICATION CACHE
+        ===================================================== */
+
+        window
+            .applicationCache
+            .addEventListener(
+                "progress",
+                DLProgress,
+                false
+            );
+
+
+        window
+            .applicationCache
+            .oncached =
+            function(e) {
+
+                DisplayCacheProgress();
+            };
+
+
+        window
+            .applicationCache
+            .onupdateready =
+            function(e) {
+
+                DisplayCacheProgress();
+            };
+
     </script>
+
 </head>
+
+
 <body>
+
+
     <div class="cache-card">
-        <div class="cache-title">
-            ⚡ GoldenHenxy9.000
-            <small>by <strong>XYVENQORIX</strong></small>
+
+
+        <div class="cache-content">
+
+
+            <!-- PROMPT -->
+
+            <div class="terminal-line">
+
+                <span class="prompt">
+                    xyvenqorix@psfree
+                </span>
+
+                :~$
+
+                ./install-cache
+
+            </div>
+
+
+            <!-- TITULO -->
+
+            <div class="cache-title">
+
+                ⚡ GoldenHenxy9.000
+
+                <small>
+                    by
+                    <strong>
+                        XYVENQORIX
+                    </strong>
+                </small>
+
+            </div>
+
+
+            <!-- SUBTITULO -->
+
+            <div class="cache-sub">
+
+                offline cache · Lapse Kex 9.00
+
+            </div>
+
+
+            <!-- ESTADO -->
+
+            <div class="terminal-status">
+
+                <div>
+                    <span class="label">
+                        [INFO]
+                    </span>
+
+                    Initializing PSFree...
+                </div>
+
+                <div>
+                    <span class="label">
+                        [INFO]
+                    </span>
+
+                    Preparing offline cache...
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESO -->
+
+            <div class="progress-wrap">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar"
+                    style="width:0%;"
+                ></div>
+
+            </div>
+
+
+            <!-- TEXTO PROGRESO -->
+
+            <div
+                class="progress-label"
+                id="progressLabel"
+            >
+            </div>
+
+
+            <!-- INFORMACION -->
+
+            <div class="cache-status">
+
+                <span>
+                    📦 PSFree
+                </span>
+
+                <span>
+                    🔹 v1.5.0b
+                </span>
+
+                <span class="creator-badge">
+                    🏆 XYVENQORIX
+                </span>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="footer-small">
+
+                <span class="creator">
+                    XYVENQORIX
+                </span>
+
+                · GoldenHenxy9.000
+
+            </div>
+
+
         </div>
-        <div class="cache-sub">offline cache · Lapse Kex 9.00</div>
-        <div class="progress-wrap">
-            <div class="progress-bar" id="progressBar" style="width:0%;"></div>
-        </div>
-        <div class="progress-label" id="progressLabel"></div>
-        <div class="cache-status">
-            <span>📦 PSFree</span>
-            <span>🔹 v1.5.0b</span>
-            <span class="creator-badge">🏆 XYVENQORIX</span>
-        </div>
-        <div class="footer-small">
-            <span class="creator">XYVENQORIX</span>
-        </div>
+
+
     </div>
+
+
 </body>
+
 </html>

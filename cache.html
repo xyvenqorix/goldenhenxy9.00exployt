@@ -49,7 +49,7 @@
 
         /* =====================================================
            BODY
-           CENTRADO FIJO EN TODO MOMENTO
+           CENTRADO FIJO
         ===================================================== */
 
         body {
@@ -106,18 +106,15 @@
 
         /* =====================================================
            TERMINAL
-           SIEMPRE CENTRADA
+           CENTRADO ABSOLUTO Y ESTABLE
         ===================================================== */
 
         .cache-card {
 
-            position: absolute;
+            position: fixed;
 
             top: 50%;
             left: 50%;
-
-            transform:
-                translate(-50%, -50%);
 
             width: min(650px, calc(100vw - 40px));
 
@@ -128,6 +125,12 @@
 
             max-height:
                 calc(100dvh - 40px);
+
+            transform:
+                translate3d(-50%, -50%, 0);
+
+            -webkit-transform:
+                translate3d(-50%, -50%, 0);
 
             background:
                 linear-gradient(
@@ -155,14 +158,17 @@
                 inset 0 1px 0
                 rgba(255, 255, 255, 0.04);
 
-            animation:
-                terminalAppear
-                0.45s
-                ease-out;
-
             isolation: isolate;
 
             z-index: 10;
+
+            opacity: 0;
+
+            animation:
+                terminalAppear
+                0.45s
+                ease-out
+                forwards;
         }
 
 
@@ -826,6 +832,8 @@
 
         /* =====================================================
            ANIMACION
+           IMPORTANTE:
+           NO MODIFICA EL TRANSFORM DE LA TARJETA
         ===================================================== */
 
         @keyframes terminalAppear {
@@ -835,12 +843,6 @@
                 opacity:
                     0;
 
-                transform:
-                    translate(
-                        -50%,
-                        calc(-50% + 12px)
-                    )
-                    scale(0.98);
             }
 
             to {
@@ -848,12 +850,6 @@
                 opacity:
                     1;
 
-                transform:
-                    translate(
-                        -50%,
-                        -50%
-                    )
-                    scale(1);
             }
         }
 
@@ -939,8 +935,7 @@
 
         /* =====================================================
            PANTALLAS MUY BAJAS
-           LA TERMINAL SIGUE CENTRADA
-        ===================================================== */
+           ===================================================== */
 
         @media (max-height: 500px) {
 
@@ -989,8 +984,7 @@
 
         /* =====================================================
            HISTORIAL
-           NO MODIFICAR LA POSICION VISUAL DE LA TERMINAL
-        ===================================================== */
+           ===================================================== */
 
         try {
 
@@ -1122,12 +1116,20 @@
 
             /*
              * IMPORTANTE:
-             * No cambiamos el transform,
-             * top ni left de la terminal.
              *
-             * Por eso permanece centrada
-             * incluso mientras carga.
+             * La tarjeta utiliza:
+             *
+             * position: fixed
+             * top: 50%
+             * left: 50%
+             * transform: translate3d(-50%, -50%, 0)
+             *
+             * La animación solamente modifica
+             * opacity.
+             *
+             * Por eso la posición no cambia.
              */
+
 
             setTimeout(
                 function() {
@@ -1353,4 +1355,4 @@
 
 </body>
 
-</html>
+                    </html>

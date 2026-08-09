@@ -52,6 +52,10 @@
         }
 
 
+        /* =====================================================
+           HTML
+        ===================================================== */
+
         html {
 
             width: 100%;
@@ -62,8 +66,14 @@
 
             scroll-padding: 0;
 
+            overflow-x: hidden;
+
         }
 
+
+        /* =====================================================
+           BODY
+        ===================================================== */
 
         body {
 
@@ -71,23 +81,17 @@
 
             min-height: 100vh;
 
-        }
+            min-height: 100dvh;
 
+            margin: 0;
 
-        /* =====================================================
-           BODY
-           CENTRADO REAL
-        ===================================================== */
-
-        body {
+            padding: 20px;
 
             display: flex;
 
             align-items: center;
 
             justify-content: center;
-
-            padding: 20px;
 
             background:
 
@@ -124,8 +128,10 @@
 
 
         /* =====================================================
-           CONTENEDOR DE CENTRADO
-           EVITA QUE EL HASH CAMBIE LA POSICIÓN
+           CONTENEDOR DE CENTRADO REAL
+           
+           LA TERMINAL SE MANTIENE CENTRADA EN LA VENTANA.
+           NO SE CAMBIA A FLEX-START EN PANTALLAS BAJAS.
         ===================================================== */
 
         .page {
@@ -133,6 +139,8 @@
             width: 100%;
 
             min-height: calc(100vh - 40px);
+
+            min-height: calc(100dvh - 40px);
 
             display: flex;
 
@@ -155,7 +163,9 @@
 
             width: min(900px, 100%);
 
-            margin: 0 auto;
+            max-width: 900px;
+
+            margin: auto;
 
             background:
 
@@ -204,6 +214,8 @@
             width: 100%;
 
             height: 44px;
+
+            min-height: 44px;
 
             display: flex;
 
@@ -258,6 +270,8 @@
 
             height: 12px;
 
+            flex: 0 0 12px;
+
             border-radius: 50%;
 
             box-shadow:
@@ -309,6 +323,8 @@
             line-height: 44px;
 
             white-space: nowrap;
+
+            text-align: center;
 
         }
 
@@ -868,6 +884,8 @@
 
         /* =====================================================
            PANTALLAS PEQUEÑAS
+           SOLO REDUCE TAMAÑOS.
+           NO ROMPE EL CENTRADO.
         ===================================================== */
 
         @media (max-width: 700px) {
@@ -884,12 +902,17 @@
                 min-height:
                     calc(100vh - 30px);
 
+                min-height:
+                    calc(100dvh - 30px);
+
             }
 
 
             .terminal {
 
                 width: 100%;
+
+                max-width: 100%;
 
             }
 
@@ -928,26 +951,79 @@
 
 
         /* =====================================================
-           PANTALLAS MUY BAJAS
-           PERMITE SCROLL SIN ROMPER EL CENTRADO
+           PANTALLAS MUY PEQUEÑAS
+           
+           IMPORTANTE:
+           NO SE CAMBIA align-items A flex-start.
+           LA TERMINAL SIGUE CENTRADA.
         ===================================================== */
 
-        @media (max-height: 650px) {
+        @media (max-width: 420px) {
 
             body {
 
-                align-items: flex-start;
-
-                padding-top: 15px;
-
-                padding-bottom: 15px;
+                padding: 10px;
 
             }
 
 
             .page {
 
-                min-height: auto;
+                min-height:
+                    calc(100vh - 20px);
+
+                min-height:
+                    calc(100dvh - 20px);
+
+            }
+
+
+            .terminal-content {
+
+                padding:
+                    22px 14px 20px;
+
+            }
+
+
+            .terminal-prompt {
+
+                font-size: 11px;
+
+            }
+
+
+            .brand h1 {
+
+                font-size: 23px;
+
+            }
+
+
+            .brand .byline {
+
+                font-size: 10px;
+
+                letter-spacing: 1.5px;
+
+            }
+
+
+            .brand .version {
+
+                font-size: 10px;
+
+                padding:
+                    5px 10px;
+
+            }
+
+
+            #console {
+
+                padding: 15px;
+
+                font-size: 12px;
 
             }
 
@@ -965,19 +1041,50 @@
 
         (function () {
 
-            if (
-                window.location.hash
-            ) {
+            try {
 
                 window.history.scrollRestoration =
                     'manual';
 
-                window.scrollTo(
-                    0,
-                    0
-                );
+            } catch (e) {}
+
+
+            function keepTop() {
+
+                if (
+                    window.scrollX !== 0 ||
+                    window.scrollY !== 0
+                ) {
+
+                    window.scrollTo(
+                        0,
+                        0
+                    );
+
+                }
 
             }
+
+
+            window.addEventListener(
+                'load',
+                keepTop,
+                false
+            );
+
+
+            window.addEventListener(
+                'hashchange',
+                keepTop,
+                false
+            );
+
+
+            window.addEventListener(
+                'popstate',
+                keepTop,
+                false
+            );
 
         })();
 
@@ -987,8 +1094,11 @@
         ===================================================== */
 
         if (
+
             window.applicationCache &&
+
             window.applicationCache.status == '0'
+
         ) {
 
             window.location.replace(
@@ -1007,7 +1117,6 @@
 
     <!-- =====================================================
          CONTENEDOR DE CENTRADO
-         NO TIENE ID NI ANCHOR
     ===================================================== -->
 
     <main class="page">

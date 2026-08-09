@@ -40,9 +40,12 @@
 
         /* =====================================================
            BODY
+           TERMINAL CENTRADA EN LA PANTALLA
         ===================================================== */
 
         body {
+
+            width: 100%;
 
             min-height: 100vh;
 
@@ -52,7 +55,7 @@
 
             justify-content: center;
 
-            padding: 25px;
+            padding: 20px;
 
             background:
 
@@ -87,6 +90,7 @@
 
         /* =====================================================
            TERMINAL PRINCIPAL
+           CENTRADA HORIZONTAL Y VERTICALMENTE
         ===================================================== */
 
         .terminal {
@@ -95,7 +99,9 @@
 
             width: min(900px, 100%);
 
-            margin: 0 auto;
+            max-height: calc(100vh - 40px);
+
+            margin: 0;
 
             background:
                 linear-gradient(
@@ -753,9 +759,7 @@
 
 
         /* =====================================================
-           PANTALLAS MAS PEQUEÑAS
-           NO CAMBIA EL DISEÑO,
-           SOLO EVITA DESBORDAMIENTO
+           PANTALLAS PEQUEÑAS
         ===================================================== */
 
         @media (max-width: 700px) {
@@ -763,6 +767,14 @@
             body {
 
                 padding: 15px;
+            }
+
+            .terminal {
+
+                width: 100%;
+
+                max-height:
+                    calc(100vh - 30px);
             }
 
             .terminal-content {
@@ -786,6 +798,31 @@
             .badge-creator {
 
                 text-align: left;
+            }
+        }
+
+
+        /* =====================================================
+           PANTALLAS MUY BAJAS
+           MANTIENE LA TERMINAL VISIBLE
+        ===================================================== */
+
+        @media (max-height: 650px) {
+
+            body {
+
+                align-items: flex-start;
+
+                padding-top: 15px;
+
+                padding-bottom: 15px;
+
+                overflow-y: auto;
+            }
+
+            .terminal {
+
+                max-height: none;
             }
         }
 

@@ -4,6 +4,11 @@
 
     <meta charset="utf-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>
         GoldenHenxy9.000 by XYVENQORIX
     </title>
@@ -15,32 +20,46 @@
            RESET
         ===================================================== */
 
-        * {
+        *,
+        *::before,
+        *::after {
+
             margin: 0;
             padding: 0;
+
             box-sizing: border-box;
         }
 
 
+        /* =====================================================
+           HTML
+        ===================================================== */
+
         html {
+
             width: 100%;
+
             min-height: 100%;
+
+            background: #0b0d12;
         }
 
 
         /* =====================================================
            BODY
+           CENTRADO ROBUSTO
         ===================================================== */
 
         body {
 
             width: 100%;
+
             min-height: 100vh;
+            min-height: 100dvh;
 
-            display: flex;
+            display: grid;
 
-            justify-content: center;
-            align-items: center;
+            place-items: center;
 
             padding: 20px;
 
@@ -71,7 +90,23 @@
                 Arial,
                 sans-serif;
 
-            overflow: hidden;
+            overflow-x: hidden;
+
+            overflow-y: auto;
+
+            margin: 0;
+
+            position: relative;
+        }
+
+
+        /* =====================================================
+           EVITA DESPLAZAMIENTO PRODUCIDO POR HASH
+        ===================================================== */
+
+        html:has(body) {
+
+            scroll-behavior: auto;
         }
 
 
@@ -83,11 +118,14 @@
 
             position: relative;
 
-            width: min(650px, 100%);
+            width: min(
+                650px,
+                calc(100vw - 40px)
+            );
 
             min-height: 360px;
 
-            margin: auto;
+            margin: 0;
 
             background:
                 linear-gradient(
@@ -119,6 +157,10 @@
                 terminalAppear
                 0.45s
                 ease-out;
+
+            justify-self: center;
+
+            align-self: center;
         }
 
 
@@ -138,11 +180,13 @@
             left: 0;
 
             width: 100%;
+
             height: 42px;
 
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             background:
@@ -172,6 +216,9 @@
 
             z-index:
                 5;
+
+            pointer-events:
+                none;
         }
 
 
@@ -213,6 +260,9 @@
 
             z-index:
                 6;
+
+            pointer-events:
+                none;
         }
 
 
@@ -259,8 +309,14 @@
             font-size:
                 12px;
 
+            line-height:
+                1.5;
+
             text-align:
                 center;
+
+            overflow-wrap:
+                anywhere;
         }
 
 
@@ -309,6 +365,9 @@
             text-shadow:
                 0 0 18px
                 rgba(245, 217, 138, 0.10);
+
+            overflow-wrap:
+                anywhere;
         }
 
 
@@ -376,6 +435,9 @@
 
             text-align:
                 center;
+
+            overflow-wrap:
+                anywhere;
         }
 
 
@@ -512,6 +574,9 @@
 
             text-align:
                 center;
+
+            overflow-wrap:
+                anywhere;
         }
 
 
@@ -750,23 +815,156 @@
                 #ffffff;
         }
 
+
+        /* =====================================================
+           MOVILES
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding:
+                    15px;
+            }
+
+
+            .cache-card {
+
+                width:
+                    calc(100vw - 30px);
+
+                min-height:
+                    0;
+            }
+
+
+            .cache-content {
+
+                padding:
+                    68px 20px 25px;
+            }
+
+
+            .cache-title {
+
+                font-size:
+                    22px;
+            }
+
+
+            .terminal-line {
+
+                font-size:
+                    11px;
+            }
+
+
+            .cache-sub {
+
+                font-size:
+                    10px;
+            }
+        }
+
+
+        /* =====================================================
+           PANTALLAS BAJAS
+           PERMITE SCROLL SIN ROMPER EL CENTRADO
+        ===================================================== */
+
+        @media (max-height: 600px) {
+
+            body {
+
+                place-items:
+                    start center;
+
+                padding-top:
+                    15px;
+
+                padding-bottom:
+                    15px;
+            }
+
+
+            .cache-card {
+
+                align-self:
+                    start;
+            }
+        }
+
+
+        /* =====================================================
+           PANTALLAS MUY PEQUEÑAS
+        ===================================================== */
+
+        @media (max-width: 400px) {
+
+            .cache-content {
+
+                padding:
+                    65px 15px 20px;
+            }
+
+
+            .cache-title {
+
+                font-size:
+                    20px;
+            }
+
+
+            .cache-status {
+
+                gap:
+                    8px 14px;
+            }
+        }
+
     </style>
 
 
     <script>
 
-        history.replaceState(
-            null,
-            null,
-            'index.html'
-        );
+        /* =====================================================
+           NORMALIZAR HASH
+           EVITA QUE #foo / #bar CAMBIE LA POSICION VISUAL
+        ===================================================== */
 
-        var histlength =
-            history.length;
+        (function () {
 
-        history.go(
-            -histlength
-        );
+            if (window.location.hash) {
+
+                window.scrollTo(
+                    0,
+                    0
+                );
+
+            }
+
+        })();
+
+
+        /* =====================================================
+           HISTORIAL
+        ===================================================== */
+
+        try {
+
+            history.replaceState(
+                null,
+                "",
+                "index.html"
+            );
+
+        } catch (e) {
+
+            /* El navegador puede bloquear
+               replaceState en algunos entornos. */
+
+        }
 
 
         /* =====================================================
@@ -775,36 +973,74 @@
 
         function DLProgress(e) {
 
-            var pct =
-                Math.round(
-                    e.loaded /
-                    e.total *
-                    100
-                );
+            var pct = 0;
+
+
+            /*
+             * Algunos navegadores/Application Cache
+             * pueden entregar e.total = 0.
+             */
+
+            if (
+                e &&
+                e.lengthComputable &&
+                e.total > 0
+            ) {
+
+                pct =
+                    Math.round(
+                        (
+                            e.loaded /
+                            e.total
+                        ) * 100
+                    );
+
+            }
+
+
+            if (pct < 0) {
+
+                pct = 0;
+
+            }
+
 
             if (pct > 100) {
 
                 pct = 100;
+
             }
 
 
-            document
-                .getElementById(
-                    'progressBar'
-                )
-                .style
-                .width =
-                pct + '%';
+            var progressBar =
+                document.getElementById(
+                    "progressBar"
+                );
 
 
-            document
-                .getElementById(
-                    'progressLabel'
-                )
-                .innerHTML =
-                'Installing Offline Cache ... '
-                + pct
-                + '%';
+            var progressLabel =
+                document.getElementById(
+                    "progressLabel"
+                );
+
+
+            if (progressBar) {
+
+                progressBar.style.width =
+                    pct + "%";
+
+            }
+
+
+            if (progressLabel) {
+
+                progressLabel.textContent =
+                    "Installing Offline Cache ... "
+                    + pct
+                    + "%";
+
+            }
+
         }
 
 
@@ -814,41 +1050,58 @@
 
         function DisplayCacheProgress() {
 
-            document
-                .getElementById(
-                    'progressBar'
-                )
-                .style
-                .width =
-                '100%';
-
-
-            document
-                .getElementById(
-                    'progressLabel'
-                )
-                .innerHTML =
-                '✓ Cache Installed Successfully';
-
-
-            document
-                .querySelector(
-                    '.cache-card'
-                )
-                .classList
-                .add(
-                    'cache-done'
+            var progressBar =
+                document.getElementById(
+                    "progressBar"
                 );
 
 
+            var progressLabel =
+                document.getElementById(
+                    "progressLabel"
+                );
+
+
+            var card =
+                document.querySelector(
+                    ".cache-card"
+                );
+
+
+            if (progressBar) {
+
+                progressBar.style.width =
+                    "100%";
+
+            }
+
+
+            if (progressLabel) {
+
+                progressLabel.textContent =
+                    "✓ Cache Installed Successfully";
+
+            }
+
+
+            if (card) {
+
+                card.classList.add(
+                    "cache-done"
+                );
+
+            }
+
+
             setTimeout(
-                function() {
+                function () {
 
                     location.reload();
 
                 },
                 3000
             );
+
         }
 
 
@@ -856,31 +1109,45 @@
            APPLICATION CACHE
         ===================================================== */
 
-        window
-            .applicationCache
-            .addEventListener(
-                "progress",
-                DLProgress,
-                false
-            );
+        if (
+            window.applicationCache
+        ) {
+
+            window
+                .applicationCache
+                .addEventListener(
+                    "progress",
+                    DLProgress,
+                    false
+                );
 
 
-        window
-            .applicationCache
-            .oncached =
-            function(e) {
+            window
+                .applicationCache
+                .addEventListener(
+                    "cached",
+                    function () {
 
-                DisplayCacheProgress();
-            };
+                        DisplayCacheProgress();
+
+                    },
+                    false
+                );
 
 
-        window
-            .applicationCache
-            .onupdateready =
-            function(e) {
+            window
+                .applicationCache
+                .addEventListener(
+                    "updateready",
+                    function () {
 
-                DisplayCacheProgress();
-            };
+                        DisplayCacheProgress();
+
+                    },
+                    false
+                );
+
+        }
 
     </script>
 
@@ -889,6 +1156,10 @@
 
 <body>
 
+
+    <!-- =====================================================
+         TERMINAL
+    ===================================================== -->
 
     <div class="cache-card">
 
@@ -984,7 +1255,7 @@
                 <div
                     class="progress-bar"
                     id="progressBar"
-                    style="width:0%;"
+                    style="width: 0%;"
                 ></div>
 
             </div>
@@ -997,7 +1268,9 @@
             <div
                 class="progress-label"
                 id="progressLabel"
-            ></div>
+            >
+                Installing Offline Cache ... 0%
+            </div>
 
 
             <!-- =================================================

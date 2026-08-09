@@ -6,10 +6,7 @@
 
     <meta charset="utf-8">
 
-    <title>
-        GoldenHenxy9.000 by XYVENQORIX
-    </title>
-
+    <title>GoldenHenxy9.000 by XYVENQORIX</title>
 
     <style>
 
@@ -18,11 +15,8 @@
         ===================================================== */
 
         @font-face {
-
             font-family: 'logging';
-
-            src:
-                url('fonts/LiberationMono-Regular.ttf');
+            src: url('fonts/LiberationMono-Regular.ttf');
         }
 
 
@@ -31,12 +25,16 @@
         ===================================================== */
 
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
         }
 
 
@@ -59,14 +57,14 @@
             background:
 
                 radial-gradient(
-                    circle at top left,
-                    #1c2538 0%,
+                    circle at 0% 0%,
+                    rgba(38, 51, 78, 0.65) 0%,
                     transparent 35%
                 ),
 
                 radial-gradient(
-                    circle at bottom right,
-                    #151d2e 0%,
+                    circle at 100% 100%,
+                    rgba(28, 40, 64, 0.55) 0%,
                     transparent 35%
                 ),
 
@@ -75,7 +73,6 @@
             color: #e5e7eb;
 
             font-family:
-
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
@@ -83,6 +80,8 @@
                 Helvetica,
                 Arial,
                 sans-serif;
+
+            overflow-x: hidden;
         }
 
 
@@ -94,40 +93,41 @@
 
             position: relative;
 
-            width: 100%;
+            width: min(900px, 100%);
 
-            max-width: 900px;
+            margin: 0 auto;
 
             background:
                 linear-gradient(
                     145deg,
-                    #101014,
-                    #09090b
+                    #121216 0%,
+                    #09090b 100%
                 );
 
             border:
                 1px solid #303036;
 
-            border-radius:
-                14px;
+            border-radius: 14px;
 
             overflow: hidden;
 
             box-shadow:
 
-                0 30px 80px
-                rgba(0,0,0,0.65),
+                0 35px 90px
+                rgba(0, 0, 0, 0.72),
 
                 0 0 0 1px
-                rgba(255,255,255,0.025),
+                rgba(255, 255, 255, 0.025),
 
                 inset 0 1px 0
-                rgba(255,255,255,0.04);
+                rgba(255, 255, 255, 0.045);
 
             animation:
                 terminalAppear
                 0.45s
                 ease-out;
+
+            isolation: isolate;
         }
 
 
@@ -139,6 +139,8 @@
 
             position: relative;
 
+            width: 100%;
+
             height: 44px;
 
             display: flex;
@@ -148,15 +150,14 @@
             justify-content: center;
 
             background:
-
                 linear-gradient(
                     180deg,
-                    #2c2c30,
-                    #1e1e21
+                    #303034 0%,
+                    #1f1f22 100%
                 );
 
             border-bottom:
-                1px solid #38383d;
+                1px solid #3a3a3f;
 
             user-select: none;
         }
@@ -186,38 +187,35 @@
 
         .dot {
 
+            display: block;
+
             width: 12px;
 
             height: 12px;
 
             border-radius: 50%;
 
-            display: block;
-
             box-shadow:
                 inset 0 0 0 1px
-                rgba(0,0,0,0.12);
+                rgba(0, 0, 0, 0.15),
+
+                0 1px 2px
+                rgba(0, 0, 0, 0.25);
         }
 
 
         .dot-red {
-
-            background:
-                #ff5f57;
+            background: #ff5f57;
         }
 
 
         .dot-yellow {
-
-            background:
-                #febc2e;
+            background: #febc2e;
         }
 
 
         .dot-green {
-
-            background:
-                #28c840;
+            background: #28c840;
         }
 
 
@@ -227,27 +225,25 @@
 
         .terminal-title {
 
-            color:
-                #a7a7ad;
+            color: #a7a7ad;
 
-            font-size:
-                12px;
+            font-size: 12px;
 
-            font-weight:
-                500;
+            font-weight: 500;
 
-            letter-spacing:
-                0.2px;
+            letter-spacing: 0.2px;
+
+            line-height: 44px;
+
+            white-space: nowrap;
         }
 
 
         .terminal-title span {
 
-            color:
-                #d0d0d4;
+            color: #d6d6da;
 
-            font-weight:
-                500;
+            font-weight: 500;
         }
 
 
@@ -257,8 +253,16 @@
 
         .terminal-content {
 
+            width: 100%;
+
             padding:
-                32px 35px 28px;
+                30px 34px 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: stretch;
         }
 
 
@@ -268,39 +272,38 @@
 
         .terminal-prompt {
 
-            margin-bottom:
-                18px;
+            width: 100%;
 
-            color:
-                #8b949e;
+            margin-bottom: 20px;
+
+            color: #8b949e;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                12px;
+            font-size: 12px;
 
-            text-align:
-                left;
+            line-height: 1.5;
+
+            text-align: left;
+
+            overflow-wrap: anywhere;
         }
 
 
         .terminal-prompt .user {
 
-            color:
-                #28c840;
+            color: #28c840;
 
-            font-weight:
-                700;
+            font-weight: 700;
         }
 
 
         .terminal-prompt .command {
 
-            color:
-                #d1d5db;
+            color: #d1d5db;
         }
 
 
@@ -310,18 +313,18 @@
 
         .brand {
 
-            text-align:
-                center;
+            width: 100%;
 
-            margin-bottom:
-                25px;
+            text-align: center;
+
+            margin:
+                0 auto 24px;
         }
 
 
         .brand h1 {
 
-            color:
-                #ffffff;
+            color: #ffffff;
 
             font-family:
                 -apple-system,
@@ -329,32 +332,33 @@
                 "Segoe UI",
                 sans-serif;
 
-            font-size:
-                30px;
+            font-size: 30px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            letter-spacing:
-                -0.4px;
+            line-height: 1.25;
+
+            letter-spacing: -0.4px;
 
             text-shadow:
                 0 2px 20px
-                rgba(255,255,255,0.08);
+                rgba(255, 255, 255, 0.08);
         }
 
 
         .brand h1 .symbol {
 
-            color:
-                #f5d98a;
+            color: #f5d98a;
+
+            text-shadow:
+                0 0 18px
+                rgba(245, 217, 138, 0.25);
         }
 
 
         .brand h1 .highlight {
 
-            color:
-                #f5d98a;
+            color: #f5d98a;
         }
 
 
@@ -364,32 +368,26 @@
 
         .brand .byline {
 
-            margin-top:
-                5px;
+            margin-top: 6px;
 
-            color:
-                #777c86;
+            color: #777c86;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                12px;
+            font-size: 12px;
 
-            letter-spacing:
-                2px;
+            letter-spacing: 2px;
         }
 
 
         .brand .byline strong {
 
-            color:
-                #f5d98a;
+            color: #f5d98a;
 
-            font-weight:
-                700;
+            font-weight: 700;
         }
 
 
@@ -399,55 +397,61 @@
 
         .brand .version {
 
-            display:
-                inline-block;
+            display: inline-block;
 
-            margin-top:
-                12px;
+            margin-top: 12px;
 
-            padding:
-                5px 14px;
+            padding: 5px 14px;
 
-            color:
-                #9ca3af;
+            color: #a4a9b2;
 
             background:
-                #151519;
+                linear-gradient(
+                    180deg,
+                    #19191d,
+                    #121216
+                );
 
             border:
                 1px solid #303036;
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                11px;
+            font-size: 11px;
 
-            letter-spacing:
-                0.6px;
+            letter-spacing: 0.6px;
 
             box-shadow:
                 inset 0 1px 0
-                rgba(255,255,255,0.03);
+                rgba(255, 255, 255, 0.04),
+
+                0 4px 12px
+                rgba(0, 0, 0, 0.2);
         }
 
 
         /* =====================================================
-           LINEA DIVISORIA
+           DIVISOR
         ===================================================== */
 
         .terminal-divider {
 
-            height:
-                1px;
+            width: 100%;
+
+            height: 1px;
 
             background:
-                rgba(255,255,255,0.07);
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.09),
+                    transparent
+                );
 
             margin:
                 0 0 20px;
@@ -460,100 +464,92 @@
 
         #console {
 
-            width:
-                100%;
+            display: block;
 
-            min-height:
-                150px;
+            width: 100%;
 
-            max-height:
-                330px;
+            min-height: 150px;
 
-            padding:
-                20px;
+            max-height: 330px;
 
-            margin:
-                0;
+            padding: 20px;
+
+            margin: 0;
 
             background:
-                #08080a;
+                linear-gradient(
+                    180deg,
+                    #09090b,
+                    #060608
+                );
 
             border:
                 1px solid #303036;
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
-            color:
-                #72ff72;
+            color: #72ff72;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                13px;
+            font-size: 13px;
 
-            line-height:
-                1.7;
+            line-height: 1.7;
 
-            text-align:
-                left;
+            text-align: left;
 
-            overflow-y:
-                auto;
+            overflow-y: auto;
 
-            overflow-x:
-                hidden;
+            overflow-x: hidden;
 
-            white-space:
-                pre-wrap;
+            white-space: pre-wrap;
 
-            word-wrap:
-                break-word;
+            word-wrap: break-word;
+
+            overflow-wrap: anywhere;
 
             box-shadow:
 
                 inset 0 0 35px
-                rgba(0,0,0,0.65),
+                rgba(0, 0, 0, 0.72),
 
                 0 8px 25px
-                rgba(0,0,0,0.25);
+                rgba(0, 0, 0, 0.25);
 
-            scrollbar-width:
-                thin;
+            scrollbar-width: thin;
 
             scrollbar-color:
-                #3b3b42 #08080a;
+                #3b3b42
+                #08080a;
         }
 
 
         /* =====================================================
-           SCROLLBAR CHROME / EDGE / SAFARI
+           SCROLLBAR
         ===================================================== */
 
         #console::-webkit-scrollbar {
 
-            width:
-                8px;
+            width: 8px;
         }
 
 
         #console::-webkit-scrollbar-track {
 
-            background:
-                #08080a;
+            background: #08080a;
+
+            border-radius: 10px;
         }
 
 
         #console::-webkit-scrollbar-thumb {
 
-            background:
-                #38383d;
+            background: #38383d;
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
             border:
                 2px solid #08080a;
@@ -562,38 +558,56 @@
 
         #console::-webkit-scrollbar-thumb:hover {
 
-            background:
-                #55555c;
+            background: #55555c;
         }
 
 
         /* =====================================================
-           CURSOR VISUAL
+           ESTADO
         ===================================================== */
 
-        #console::after {
+        .terminal-state {
 
-            content:
-                "▌";
+            width: 100%;
 
-            color:
-                #72ff72;
+            display: flex;
 
-            animation:
-                cursorBlink
-                1s
-                step-end
-                infinite;
+            align-items: center;
+
+            justify-content: flex-start;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+            color: #656b74;
+
+            font-family:
+                'logging',
+                'Courier New',
+                monospace;
+
+            font-size: 10px;
+
+            text-align: left;
         }
 
 
-        @keyframes cursorBlink {
+        .state-dot {
 
-            50% {
+            flex: 0 0 auto;
 
-                opacity:
-                    0;
-            }
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #28c840;
+
+            box-shadow:
+                0 0 8px
+                rgba(40, 200, 64, 0.5);
         }
 
 
@@ -603,23 +617,19 @@
 
         .terminal-footer {
 
-            display:
-                flex;
+            width: 100%;
 
-            align-items:
-                center;
+            display: flex;
 
-            justify-content:
-                space-between;
+            align-items: center;
 
-            gap:
-                20px;
+            justify-content: space-between;
 
-            margin-top:
-                20px;
+            gap: 20px;
 
-            padding-top:
-                18px;
+            margin-top: 20px;
+
+            padding-top: 18px;
 
             border-top:
                 1px solid
@@ -633,32 +643,26 @@
 
         .footer-links {
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
 
-            gap:
-                22px;
+            gap: 22px;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                11px;
+            font-size: 11px;
         }
 
 
         .footer-links a {
 
-            color:
-                #737983;
+            color: #737983;
 
-            text-decoration:
-                none;
+            text-decoration: none;
 
             transition:
                 color 0.2s ease,
@@ -671,8 +675,7 @@
 
         .footer-links a:hover {
 
-            color:
-                #b9c0c8;
+            color: #c1c7cf;
 
             border-bottom-color:
                 #737983;
@@ -685,83 +688,28 @@
 
         .badge-creator {
 
-            color:
-                #555b65;
+            color: #555b65;
 
             font-family:
                 'logging',
                 'Courier New',
                 monospace;
 
-            font-size:
-                10px;
+            font-size: 10px;
 
-            letter-spacing:
-                0.5px;
+            letter-spacing: 0.5px;
 
-            text-align:
-                right;
+            text-align: right;
+
+            white-space: nowrap;
         }
 
 
         .badge-creator strong {
 
-            color:
-                #f5d98a;
+            color: #f5d98a;
 
-            font-weight:
-                700;
-        }
-
-
-        /* =====================================================
-           ESTADO
-        ===================================================== */
-
-        .terminal-state {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            margin-top:
-                12px;
-
-            color:
-                #656b74;
-
-            font-family:
-                'logging',
-                'Courier New',
-                monospace;
-
-            font-size:
-                10px;
-        }
-
-
-        .state-dot {
-
-            width:
-                6px;
-
-            height:
-                6px;
-
-            border-radius:
-                50%;
-
-            background:
-                #28c840;
-
-            box-shadow:
-                0 0 8px
-                rgba(40,200,64,0.4);
+            font-weight: 700;
         }
 
 
@@ -773,8 +721,7 @@
 
             from {
 
-                opacity:
-                    0;
+                opacity: 0;
 
                 transform:
                     translateY(12px)
@@ -783,8 +730,7 @@
 
             to {
 
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(0)
@@ -802,8 +748,45 @@
             background:
                 rgba(59,130,246,0.35);
 
-            color:
-                #ffffff;
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           PANTALLAS MAS PEQUEÑAS
+           NO CAMBIA EL DISEÑO,
+           SOLO EVITA DESBORDAMIENTO
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+            .terminal-content {
+
+                padding:
+                    25px 20px 22px;
+            }
+
+            .brand h1 {
+
+                font-size: 26px;
+            }
+
+            .terminal-footer {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .badge-creator {
+
+                text-align: left;
+            }
         }
 
     </style>
@@ -817,8 +800,7 @@
 
         if (
             window.applicationCache.status == '0'
-        )
-        {
+        ) {
 
             window.location.replace(
                 "cache.html"
@@ -841,7 +823,9 @@
     <div class="terminal">
 
 
-        <!-- BARRA MACOS -->
+        <!-- =================================================
+             BARRA MACOS
+        ================================================= -->
 
         <div class="terminal-header">
 
@@ -877,7 +861,9 @@
         </div>
 
 
-        <!-- CONTENIDO -->
+        <!-- =================================================
+             CONTENIDO
+        ================================================= -->
 
         <div class="terminal-content">
 
@@ -899,10 +885,11 @@
             </div>
 
 
-            <!-- MARCA -->
+            <!-- =================================================
+                 MARCA
+            ================================================= -->
 
             <div class="brand">
-
 
                 <h1>
 
@@ -936,7 +923,6 @@
 
                 </span>
 
-
             </div>
 
 
@@ -947,12 +933,16 @@
             ></div>
 
 
-            <!-- CONSOLA REAL -->
+            <!-- =================================================
+                 CONSOLA REAL
+            ================================================= -->
 
             <pre id="console"></pre>
 
 
-            <!-- ESTADO -->
+            <!-- =================================================
+                 ESTADO
+            ================================================= -->
 
             <div class="terminal-state">
 
@@ -965,7 +955,9 @@
             </div>
 
 
-            <!-- FOOTER -->
+            <!-- =================================================
+                 FOOTER
+            ================================================= -->
 
             <div class="terminal-footer">
 
@@ -1004,7 +996,9 @@
     </div>
 
 
-    <!-- SCRIPT ORIGINAL -->
+    <!-- =====================================================
+         SCRIPT ORIGINAL
+    ===================================================== -->
 
     <script
         type="module"

@@ -38,42 +38,48 @@
         html {
 
             width: 100%;
+            height: 100%;
 
-            min-height: 100%;
+            margin: 0;
+            padding: 0;
 
-            background: #0b0d12;
+            overflow: hidden;
         }
 
 
         /* =====================================================
            BODY
-           CENTRADO ROBUSTO
+           CENTRADO FIJO EN TODO MOMENTO
         ===================================================== */
 
         body {
 
             width: 100%;
+            height: 100%;
 
             min-height: 100vh;
             min-height: 100dvh;
 
-            display: grid;
+            display: flex;
 
-            place-items: center;
+            align-items: center;
+            justify-content: center;
 
             padding: 20px;
+
+            margin: 0;
 
             background:
 
                 radial-gradient(
                     circle at 15% 10%,
-                    #1c2538 0%,
+                    rgba(28, 37, 56, 0.95) 0%,
                     transparent 35%
                 ),
 
                 radial-gradient(
                     circle at 85% 90%,
-                    #151d2e 0%,
+                    rgba(21, 29, 46, 0.95) 0%,
                     transparent 35%
                 ),
 
@@ -90,48 +96,44 @@
                 Arial,
                 sans-serif;
 
-            overflow-x: hidden;
+            overflow: hidden;
 
-            overflow-y: auto;
+            position: fixed;
 
-            margin: 0;
-
-            position: relative;
+            inset: 0;
         }
 
 
         /* =====================================================
-           EVITA DESPLAZAMIENTO PRODUCIDO POR HASH
-        ===================================================== */
-
-        html:has(body) {
-
-            scroll-behavior: auto;
-        }
-
-
-        /* =====================================================
-           TERMINAL MACOS
+           TERMINAL
+           SIEMPRE CENTRADA
         ===================================================== */
 
         .cache-card {
 
-            position: relative;
+            position: absolute;
 
-            width: min(
-                650px,
-                calc(100vw - 40px)
-            );
+            top: 50%;
+            left: 50%;
 
-            min-height: 360px;
+            transform:
+                translate(-50%, -50%);
 
-            margin: 0;
+            width: min(650px, calc(100vw - 40px));
+
+            max-width: 650px;
+
+            max-height:
+                calc(100vh - 40px);
+
+            max-height:
+                calc(100dvh - 40px);
 
             background:
                 linear-gradient(
                     145deg,
-                    #101014,
-                    #09090b
+                    #101014 0%,
+                    #09090b 100%
                 );
 
             border:
@@ -158,9 +160,9 @@
                 0.45s
                 ease-out;
 
-            justify-self: center;
+            isolation: isolate;
 
-            align-self: center;
+            z-index: 10;
         }
 
 
@@ -180,20 +182,18 @@
             left: 0;
 
             width: 100%;
-
             height: 42px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             background:
                 linear-gradient(
                     180deg,
-                    #2c2c30,
-                    #1e1e21
+                    #2c2c30 0%,
+                    #1e1e21 100%
                 );
 
             color:
@@ -280,6 +280,52 @@
 
             text-align:
                 center;
+
+            max-height:
+                calc(100vh - 40px);
+
+            max-height:
+                calc(100dvh - 40px);
+
+            overflow-y:
+                auto;
+
+            overflow-x:
+                hidden;
+
+            scrollbar-width:
+                thin;
+
+            scrollbar-color:
+                #38383d transparent;
+        }
+
+
+        /* =====================================================
+           SCROLLBAR
+        ===================================================== */
+
+        .cache-content::-webkit-scrollbar {
+
+            width:
+                6px;
+        }
+
+
+        .cache-content::-webkit-scrollbar-track {
+
+            background:
+                transparent;
+        }
+
+
+        .cache-content::-webkit-scrollbar-thumb {
+
+            background:
+                #38383d;
+
+            border-radius:
+                10px;
         }
 
 
@@ -304,6 +350,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -345,6 +392,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -425,6 +473,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -435,9 +484,6 @@
 
             text-align:
                 center;
-
-            overflow-wrap:
-                anywhere;
         }
 
 
@@ -462,6 +508,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -511,7 +558,7 @@
 
             box-shadow:
                 inset 0 2px 5px
-                rgba(0,0,0,0.7);
+                rgba(0, 0, 0, 0.7);
         }
 
 
@@ -539,7 +586,7 @@
 
             box-shadow:
                 0 0 15px
-                rgba(245,217,138,0.18);
+                rgba(245, 217, 138, 0.18);
         }
 
 
@@ -564,6 +611,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -619,6 +667,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -664,6 +713,7 @@
                 Menlo,
                 Monaco,
                 Consolas,
+                "Liberation Mono",
                 monospace;
 
             font-size:
@@ -763,7 +813,7 @@
 
             box-shadow:
                 0 0 15px
-                rgba(67,217,130,0.20);
+                rgba(67, 217, 130, 0.20);
         }
 
 
@@ -786,7 +836,10 @@
                     0;
 
                 transform:
-                    translateY(12px)
+                    translate(
+                        -50%,
+                        calc(-50% + 12px)
+                    )
                     scale(0.98);
             }
 
@@ -796,7 +849,10 @@
                     1;
 
                 transform:
-                    translateY(0)
+                    translate(
+                        -50%,
+                        -50%
+                    )
                     scale(1);
             }
         }
@@ -809,7 +865,7 @@
         ::selection {
 
             background:
-                rgba(59,130,246,0.35);
+                rgba(59, 130, 246, 0.35);
 
             color:
                 #ffffff;
@@ -825,17 +881,20 @@
             body {
 
                 padding:
-                    15px;
+                    12px;
             }
 
 
             .cache-card {
 
                 width:
-                    calc(100vw - 30px);
+                    calc(100vw - 24px);
 
-                min-height:
-                    0;
+                max-width:
+                    calc(100vw - 24px);
+
+                max-height:
+                    calc(100dvh - 24px);
             }
 
 
@@ -843,6 +902,9 @@
 
                 padding:
                     68px 20px 25px;
+
+                max-height:
+                    calc(100dvh - 24px);
             }
 
 
@@ -860,66 +922,63 @@
             }
 
 
-            .cache-sub {
+            .terminal-status {
 
                 font-size:
-                    10px;
+                    11px;
+            }
+
+
+            .progress-label {
+
+                font-size:
+                    12px;
             }
         }
 
 
         /* =====================================================
-           PANTALLAS BAJAS
-           PERMITE SCROLL SIN ROMPER EL CENTRADO
+           PANTALLAS MUY BAJAS
+           LA TERMINAL SIGUE CENTRADA
         ===================================================== */
 
-        @media (max-height: 600px) {
-
-            body {
-
-                place-items:
-                    start center;
-
-                padding-top:
-                    15px;
-
-                padding-bottom:
-                    15px;
-            }
-
+        @media (max-height: 500px) {
 
             .cache-card {
 
-                align-self:
-                    start;
+                max-height:
+                    calc(100dvh - 20px);
             }
-        }
 
-
-        /* =====================================================
-           PANTALLAS MUY PEQUEÑAS
-        ===================================================== */
-
-        @media (max-width: 400px) {
 
             .cache-content {
 
                 padding:
-                    65px 15px 20px;
+                    65px 20px 20px;
+
+                max-height:
+                    calc(100dvh - 20px);
             }
 
 
-            .cache-title {
+            .cache-sub {
 
-                font-size:
-                    20px;
+                margin-bottom:
+                    15px;
             }
 
 
-            .cache-status {
+            .terminal-status {
 
-                gap:
-                    8px 14px;
+                line-height:
+                    1.5;
+            }
+
+
+            .footer-small {
+
+                margin-top:
+                    12px;
             }
         }
 
@@ -929,26 +988,8 @@
     <script>
 
         /* =====================================================
-           NORMALIZAR HASH
-           EVITA QUE #foo / #bar CAMBIE LA POSICION VISUAL
-        ===================================================== */
-
-        (function () {
-
-            if (window.location.hash) {
-
-                window.scrollTo(
-                    0,
-                    0
-                );
-
-            }
-
-        })();
-
-
-        /* =====================================================
            HISTORIAL
+           NO MODIFICAR LA POSICION VISUAL DE LA TERMINAL
         ===================================================== */
 
         try {
@@ -961,8 +1002,9 @@
 
         } catch (e) {
 
-            /* El navegador puede bloquear
-               replaceState en algunos entornos. */
+            console.log(
+                "History API unavailable"
+            );
 
         }
 
@@ -976,23 +1018,15 @@
             var pct = 0;
 
 
-            /*
-             * Algunos navegadores/Application Cache
-             * pueden entregar e.total = 0.
-             */
-
             if (
                 e &&
-                e.lengthComputable &&
+                e.total &&
                 e.total > 0
             ) {
 
                 pct =
                     Math.round(
-                        (
-                            e.loaded /
-                            e.total
-                        ) * 100
+                        (e.loaded / e.total) * 100
                     );
 
             }
@@ -1001,14 +1035,12 @@
             if (pct < 0) {
 
                 pct = 0;
-
             }
 
 
             if (pct > 100) {
 
                 pct = 100;
-
             }
 
 
@@ -1028,7 +1060,6 @@
 
                 progressBar.style.width =
                     pct + "%";
-
             }
 
 
@@ -1038,7 +1069,6 @@
                     "Installing Offline Cache ... "
                     + pct
                     + "%";
-
             }
 
         }
@@ -1072,7 +1102,6 @@
 
                 progressBar.style.width =
                     "100%";
-
             }
 
 
@@ -1080,7 +1109,6 @@
 
                 progressLabel.textContent =
                     "✓ Cache Installed Successfully";
-
             }
 
 
@@ -1089,12 +1117,20 @@
                 card.classList.add(
                     "cache-done"
                 );
-
             }
 
 
+            /*
+             * IMPORTANTE:
+             * No cambiamos el transform,
+             * top ni left de la terminal.
+             *
+             * Por eso permanece centrada
+             * incluso mientras carga.
+             */
+
             setTimeout(
-                function () {
+                function() {
 
                     location.reload();
 
@@ -1126,7 +1162,7 @@
                 .applicationCache
                 .addEventListener(
                     "cached",
-                    function () {
+                    function() {
 
                         DisplayCacheProgress();
 
@@ -1139,7 +1175,7 @@
                 .applicationCache
                 .addEventListener(
                     "updateready",
-                    function () {
+                    function() {
 
                         DisplayCacheProgress();
 

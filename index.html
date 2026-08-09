@@ -10,14 +10,13 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <title>GoldenHenxy9.000 by XYVENQORIX</title>
 
 
     <style>
-
 
         /* =====================================================
            FUENTE DE LA CONSOLA
@@ -44,7 +43,6 @@
         *::after {
 
             margin: 0;
-
             padding: 0;
 
             box-sizing: border-box;
@@ -59,14 +57,12 @@
         html {
 
             width: 100%;
+            height: 100%;
 
-            min-height: 100%;
+            margin: 0;
+            padding: 0;
 
-            scroll-behavior: auto;
-
-            scroll-padding: 0;
-
-            overflow-x: hidden;
+            overflow: hidden;
 
         }
 
@@ -78,20 +74,10 @@
         body {
 
             width: 100%;
-
-            min-height: 100vh;
-
-            min-height: 100dvh;
+            height: 100%;
 
             margin: 0;
-
-            padding: 20px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
+            padding: 0;
 
             background:
 
@@ -120,27 +106,59 @@
                 Arial,
                 sans-serif;
 
-            overflow-x: hidden;
-
-            overflow-y: auto;
+            overflow: hidden;
 
         }
 
 
         /* =====================================================
-           CONTENEDOR DE CENTRADO REAL
-           
-           LA TERMINAL SE MANTIENE CENTRADA EN LA VENTANA.
-           NO SE CAMBIA A FLEX-START EN PANTALLAS BAJAS.
+           VIEWPORT FIJO
+
+           IMPORTANTE:
+           Esta capa es la que mantiene la terminal centrada
+           aunque PS4 cambie el hash, URL, scroll o viewport.
+        ===================================================== */
+
+        .screen {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            overflow: auto;
+
+            overscroll-behavior: none;
+
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+
+        /* =====================================================
+           CONTENEDOR DE LA TERMINAL
+
+           NO DEPENDE DEL HASH NI DEL SCROLL DEL DOCUMENTO
         ===================================================== */
 
         .page {
 
             width: 100%;
 
-            min-height: calc(100vh - 40px);
-
-            min-height: calc(100dvh - 40px);
+            min-height: 100%;
 
             display: flex;
 
@@ -148,7 +166,10 @@
 
             justify-content: center;
 
-            flex-shrink: 0;
+            flex: 0 0 auto;
+
+            margin: 0;
+            padding: 0;
 
         }
 
@@ -165,7 +186,9 @@
 
             max-width: 900px;
 
-            margin: auto;
+            margin: 0 auto;
+
+            flex: 0 0 auto;
 
             background:
 
@@ -215,8 +238,6 @@
 
             height: 44px;
 
-            min-height: 44px;
-
             display: flex;
 
             align-items: center;
@@ -236,6 +257,8 @@
 
             user-select: none;
 
+            flex-shrink: 0;
+
         }
 
 
@@ -248,7 +271,6 @@
             position: absolute;
 
             left: 14px;
-
             top: 0;
 
             height: 44px;
@@ -267,10 +289,7 @@
             display: block;
 
             width: 12px;
-
             height: 12px;
-
-            flex: 0 0 12px;
 
             border-radius: 50%;
 
@@ -323,8 +342,6 @@
             line-height: 44px;
 
             white-space: nowrap;
-
-            text-align: center;
 
         }
 
@@ -714,7 +731,6 @@
                 0 0 auto;
 
             width: 6px;
-
             height: 6px;
 
             border-radius: 50%;
@@ -884,26 +900,13 @@
 
         /* =====================================================
            PANTALLAS PEQUEÑAS
-           SOLO REDUCE TAMAÑOS.
-           NO ROMPE EL CENTRADO.
         ===================================================== */
 
         @media (max-width: 700px) {
 
-            body {
+            .screen {
 
                 padding: 15px;
-
-            }
-
-
-            .page {
-
-                min-height:
-                    calc(100vh - 30px);
-
-                min-height:
-                    calc(100dvh - 30px);
 
             }
 
@@ -951,79 +954,27 @@
 
 
         /* =====================================================
-           PANTALLAS MUY PEQUEÑAS
-           
-           IMPORTANTE:
-           NO SE CAMBIA align-items A flex-start.
+           PANTALLAS MUY BAJAS
+
            LA TERMINAL SIGUE CENTRADA.
+           SI NO CABE, .screen PERMITE SCROLL.
         ===================================================== */
 
-        @media (max-width: 420px) {
+        @media (max-height: 650px) {
 
-            body {
+            .screen {
 
-                padding: 10px;
+                align-items: flex-start;
+
+                padding-top: 15px;
+                padding-bottom: 15px;
 
             }
 
 
             .page {
 
-                min-height:
-                    calc(100vh - 20px);
-
-                min-height:
-                    calc(100dvh - 20px);
-
-            }
-
-
-            .terminal-content {
-
-                padding:
-                    22px 14px 20px;
-
-            }
-
-
-            .terminal-prompt {
-
-                font-size: 11px;
-
-            }
-
-
-            .brand h1 {
-
-                font-size: 23px;
-
-            }
-
-
-            .brand .byline {
-
-                font-size: 10px;
-
-                letter-spacing: 1.5px;
-
-            }
-
-
-            .brand .version {
-
-                font-size: 10px;
-
-                padding:
-                    5px 10px;
-
-            }
-
-
-            #console {
-
-                padding: 15px;
-
-                font-size: 12px;
+                min-height: auto;
 
             }
 
@@ -1036,57 +987,52 @@
     <script>
 
         /* =====================================================
-           EVITAR QUE EL HASH DESPLACE LA TERMINAL
+           BLOQUEAR SCROLL AUTOMATICO DEL HASH
         ===================================================== */
 
         (function () {
 
             try {
 
-                window.history.scrollRestoration =
-                    'manual';
-
-            } catch (e) {}
-
-
-            function keepTop() {
-
                 if (
-                    window.scrollX !== 0 ||
-                    window.scrollY !== 0
+                    'scrollRestoration'
+                    in history
                 ) {
 
-                    window.scrollTo(
-                        0,
-                        0
-                    );
+                    history.scrollRestoration =
+                        'manual';
 
                 }
 
-            }
-
-
-            window.addEventListener(
-                'load',
-                keepTop,
-                false
-            );
-
-
-            window.addEventListener(
-                'hashchange',
-                keepTop,
-                false
-            );
-
-
-            window.addEventListener(
-                'popstate',
-                keepTop,
-                false
-            );
+            } catch (e) {}
 
         })();
+
+
+        /* =====================================================
+           FORZAR SCROLL DEL CONTENEDOR AL INICIO
+        ===================================================== */
+
+        function keepScreenCentered() {
+
+            var screen =
+                document.querySelector(
+                    '.screen'
+                );
+
+            if (screen) {
+
+                screen.scrollLeft = 0;
+                screen.scrollTop = 0;
+
+            }
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }
 
 
         /* =====================================================
@@ -1094,11 +1040,8 @@
         ===================================================== */
 
         if (
-
             window.applicationCache &&
-
             window.applicationCache.status == '0'
-
         ) {
 
             window.location.replace(
@@ -1106,6 +1049,88 @@
             );
 
         }
+
+
+        /* =====================================================
+           CUANDO CARGA LA PÁGINA
+        ===================================================== */
+
+        window.addEventListener(
+            'load',
+            function () {
+
+                keepScreenCentered();
+
+            },
+            false
+        );
+
+
+        /* =====================================================
+           SI CAMBIA EL HASH
+        ===================================================== */
+
+        window.addEventListener(
+            'hashchange',
+            function () {
+
+                setTimeout(
+                    keepScreenCentered,
+                    0
+                );
+
+                setTimeout(
+                    keepScreenCentered,
+                    100
+                );
+
+                setTimeout(
+                    keepScreenCentered,
+                    300
+                );
+
+            },
+            false
+        );
+
+
+        /* =====================================================
+           SI CAMBIA EL TAMAÑO DEL VIEWPORT
+           IMPORTANTE PARA EL NAVEGADOR DE PS4
+        ===================================================== */
+
+        window.addEventListener(
+            'resize',
+            function () {
+
+                setTimeout(
+                    keepScreenCentered,
+                    0
+                );
+
+            },
+            false
+        );
+
+
+        /* =====================================================
+           COMPROBAR DE NUEVO DESPUES DE INICIAR
+        ===================================================== */
+
+        setTimeout(
+            keepScreenCentered,
+            50
+        );
+
+        setTimeout(
+            keepScreenCentered,
+            250
+        );
+
+        setTimeout(
+            keepScreenCentered,
+            500
+        );
 
     </script>
 
@@ -1116,184 +1141,195 @@
 
 
     <!-- =====================================================
-         CONTENEDOR DE CENTRADO
+         VIEWPORT FIJO
+         LA TERMINAL NO SE MUEVE CON EL HASH
     ===================================================== -->
 
-    <main class="page">
+    <div class="screen">
 
 
         <!-- =================================================
-             TERMINAL
+             CONTENEDOR DE CENTRADO
         ================================================= -->
 
-        <div class="terminal">
+        <main class="page">
 
 
             <!-- =============================================
-                 BARRA MACOS
+                 TERMINAL
             ============================================== -->
 
-            <div class="terminal-header">
-
-
-                <div class="window-buttons">
-
-                    <span
-                        class="dot dot-red"
-                    ></span>
-
-
-                    <span
-                        class="dot dot-yellow"
-                    ></span>
-
-
-                    <span
-                        class="dot dot-green"
-                    ></span>
-
-                </div>
-
-
-                <div class="terminal-title">
-
-                    Terminal
-                    ·
-
-                    <span>
-                        GoldenHenxy9.000
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- =============================================
-                 CONTENIDO
-            ============================================== -->
-
-            <div class="terminal-content">
-
-
-                <!-- PROMPT -->
-
-                <div class="terminal-prompt">
-
-                    <span class="user">
-                        xyvenqorix@psfree
-                    </span>
-
-                    :~$
-
-                    <span class="command">
-                        ./GoldenHenxy9.000
-                    </span>
-
-                </div>
+            <div class="terminal">
 
 
                 <!-- =========================================
-                     MARCA
+                     BARRA MACOS
                 ========================================== -->
 
-                <div class="brand">
+                <div class="terminal-header">
 
 
-                    <h1>
+                    <div class="window-buttons">
 
-                        <span class="symbol">
-                            ✦
-                        </span>
+                        <span
+                            class="dot dot-red"
+                        ></span>
 
-                        <span class="highlight">
+
+                        <span
+                            class="dot dot-yellow"
+                        ></span>
+
+
+                        <span
+                            class="dot dot-green"
+                        ></span>
+
+                    </div>
+
+
+                    <div class="terminal-title">
+
+                        Terminal
+                        ·
+
+                        <span>
                             GoldenHenxy9.000
                         </span>
 
-                    </h1>
-
-
-                    <div class="byline">
-
-                        by
-
-                        <strong>
-                            XYVENQORIX
-                        </strong>
-
                     </div>
-
-
-                    <span class="version">
-
-                        v1.5.0b
-                        ·
-                        Lapse Kex 9.00
-
-                    </span>
 
 
                 </div>
 
 
-                <!-- DIVISOR -->
-
-                <div
-                    class="terminal-divider"
-                ></div>
-
-
                 <!-- =========================================
-                     CONSOLA REAL
+                     CONTENIDO
                 ========================================== -->
 
-                <pre id="console"></pre>
+                <div class="terminal-content">
 
 
-                <!-- =========================================
-                     ESTADO
-                ========================================== -->
+                    <!-- PROMPT -->
 
-                <div class="terminal-state">
+                    <div class="terminal-prompt">
 
-                    <span
-                        class="state-dot"
-                    ></span>
+                        <span class="user">
+                            xyvenqorix@psfree
+                        </span>
 
-                    PSFree terminal process active
+                        :~$
 
-                </div>
-
-
-                <!-- =========================================
-                     FOOTER
-                ========================================== -->
-
-                <div class="terminal-footer">
-
-
-                    <div class="footer-links">
-
-                        <a
-                            href="./about.html"
-                            data-jslicense="1"
-                        >
-                            JavaScript license information
-                        </a>
+                        <span class="command">
+                            ./GoldenHenxy9.000
+                        </span>
 
                     </div>
 
 
-                    <div class="badge-creator">
+                    <!-- =====================================
+                         MARCA
+                    ====================================== -->
 
-                        ⚡
+                    <div class="brand">
 
-                        <strong>
-                            XYVENQORIX
-                        </strong>
 
-                        · AGPL-3.0-or-later
+                        <h1>
+
+                            <span class="symbol">
+                                ✦
+                            </span>
+
+                            <span class="highlight">
+                                GoldenHenxy9.000
+                            </span>
+
+                        </h1>
+
+
+                        <div class="byline">
+
+                            by
+
+                            <strong>
+                                XYVENQORIX
+                            </strong>
+
+                        </div>
+
+
+                        <span class="version">
+
+                            v1.5.0b
+                            ·
+                            Lapse Kex 9.00
+
+                        </span>
+
+
+                    </div>
+
+
+                    <!-- DIVISOR -->
+
+                    <div
+                        class="terminal-divider"
+                    ></div>
+
+
+                    <!-- =====================================
+                         CONSOLA REAL
+                    ====================================== -->
+
+                    <pre id="console"></pre>
+
+
+                    <!-- =====================================
+                         ESTADO
+                    ====================================== -->
+
+                    <div class="terminal-state">
+
+                        <span
+                            class="state-dot"
+                        ></span>
+
+                        PSFree terminal process active
+
+                    </div>
+
+
+                    <!-- =====================================
+                         FOOTER
+                    ====================================== -->
+
+                    <div class="terminal-footer">
+
+
+                        <div class="footer-links">
+
+                            <a
+                                href="./about.html"
+                                data-jslicense="1"
+                            >
+                                JavaScript license information
+                            </a>
+
+                        </div>
+
+
+                        <div class="badge-creator">
+
+                            ⚡
+
+                            <strong>
+                                XYVENQORIX
+                            </strong>
+
+                            · AGPL-3.0-or-later
+
+                        </div>
+
 
                     </div>
 
@@ -1304,10 +1340,10 @@
             </div>
 
 
-        </div>
+        </main>
 
 
-    </main>
+    </div>
 
 
     <!-- =====================================================
